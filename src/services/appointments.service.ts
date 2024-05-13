@@ -1,18 +1,16 @@
 
-import { Appointment } from '../models/appointment.model';
-import { CreateAppointmentDto } from '../dto/create-appointment.dto';
-
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Appointment, AppointmentDocument } from '../models/appointment.model';
+// import { Appointment, AppointmentDocument } from '../models/appointment.model';
+import { Appointment as AppointmentModel, AppointmentDocument } from '../models/appointment.model';
 import { Slot, SlotDocument } from '../models/slot.model';
 import { CreateAppointmentDto } from '../dto/create-appointment.dto';
 
 @Injectable()
 export class AppointmentsService {
   constructor(
-    @InjectModel(Appointment.name)
+    @InjectModel(AppointmentModel.name)
     private readonly appointmentModel: Model<AppointmentDocument>,
     @InjectModel(Slot.name)
     private readonly slotModel: Model<SlotDocument>,
